@@ -73,26 +73,123 @@
        
 </form>
 </div>
+<!-- how the library looks like -->
 <p>Library sample arrangement</p>
 <div class="img">
 <a href="images/img 1.jpg">Image 1</a>
 <a href="images/img 2.jpg">Image 2</a>
 </div>
-<div class="time-card available"></div>
-    <span class="time-icon">🌅</span>
-    <span class="time-hour">08:00 AM - 10:00 AM</span>
-    <span class="slot-count">12 Desks Free</span>
-    <button type="button" class="btn-book">Select Slot</button>
+
+<section class="time-grid">
+<!-- Morning session for library booking -->
+ <div class="time-card available">   
+    
+<span class="time-icon">🌅</span>
+<span class="time-hour">08:00 AM - 10:00 AM</span>
+<span class="slot-count">12 Desks Free</span>
+<button type="button" class="btn-book">Select slot</button>
 </div>
-<div class="booking-summary-card">
-            <h3>Confirm Your Session Reservation</h3>
-            <p>You have selected: <strong>02:00 PM - 04:00 PM</strong></p>
-            <button class="btn-confirm-final">Finalize Reservation</button>
+
+<div class="time-card full">
+    <span class="time-icon">☕</span>
+    <span class="time-hour">10:00 AM - 12:00 AM</span>
+    <span class="slot-count">0 Desks free</span>
+    <button type="button" class="btn-book" disabled>full</button>
+</div>
+
+<!-- Afternoon session -->
+ <div class="time-card available">
+    <span class="time-icon">☀️</span>
+    <span class="time-hour">12:00 PM - 02:00 PM</span>
+    <span class="slot-count">10 Desks free</span>
+    <button type="button" class="btn-book" >Select slot</button>
+    
+ </div>
+ <!-- Afternoon session -->
+ <div class="time-card available">
+    <span class="time-icon">📖</span>
+    <span class="time-hour">02:00 PM - 04:00 PM</span>
+    <span class="slot-count">10 Desks free</span>
+    <button type="button" class="btn-book" >Select slot</button>
+    
+ </div>
+ 
+ <div class="time-card available">
+    <span class="time-icon">🌇</span> 
+    <span class="time-hour">04:00 PM - 06:00 PM</span>
+    <span class="slot-count">4 Desks free</span>
+    <button type="button" class="btn-book" >Select slot</button>
+    
+ </div>
+
+</section>
+
+
+<div class="booking-summary-card" id="summerycard" style="display: none;">
+          <div>  
+    <h3>Confirm Your Session Reservation</h3>
+            <p>You have selected: <strong id="selectedTimeText" style="color: #2563eb;">None</strong></p>
+            <button class="btn-confirm-final" id="finalizeBtn">Finalize Reservation</button>
         </div>
+        <!-- <script>
+            // 1. Target all interactive element nodes
+            const timeCards = document.querySelectorAll('.time-card');
+            const summaryCard = document.getElementById('summaryCard');
+            const selectedTimeText = document.getElementById('selectedTimeText');
+            const finalizeBtn = document.getElementById('finalizeBtn');
+    
+            // 2. Loop through every card to capture clicks
+            timeCards.forEach(card => {
+                const button = card.querySelector('.btn-book');
+                
+                // Skip execution on fully booked cards
+                if (card.classList.contains('full')) return;
+    
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Prevents layout bubbling issues
+    
+                    // Check if this clicked card is already chosen
+                    const isAlreadyChosen = card.classList.contains('chosen');
+    
+                    // Clear current selections across all cards first
+                    timeCards.forEach(c => {
+                        if (!c.classList.contains('full')) {
+                            c.classList.remove('chosen');
+                            c.classList.add('available');
+                            const cardBtn = c.querySelector('.btn-book');
+                            if (cardBtn) cardBtn.innerText = 'Select Slot';
+                        }
+                    });
+    
+                    if (!isAlreadyChosen) {
+                        // Lock in the new choice visually
+                        card.classList.remove('available');
+                        card.classList.add('chosen');
+                        button.innerText = 'Selected';
+    
+                        // Extract the text of the selected time range
+                        const selectedTime = card.querySelector('.time-hour').innerText;
+    
+                        // Update and show the confirmation display element at the bottom
+                        selectedTimeText.innerText = selectedTime;
+                        summaryCard.style.display = 'flex';
+                    } else {
+                        // If they click the button again, collapse the picker completely
+                        summaryCard.style.display = 'none';
+                    }
+                });
+            });
+    
+            // 3. Optional success event notification when finalizing
+            finalizeBtn.addEventListener('click', function() {
+                alert(`Success! Your study session for ${selectedTimeText.innerText} has been booked.`);
+            });
+        </script>
+    
         <div class="button">
             <input type="submit">
             <input type="Reset">
             </div>
     
 </body>
-</html>
+</html> -->
